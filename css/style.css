@@ -1,0 +1,826 @@
+
+:root{
+    --header-width:100px;
+
+}
+
+body{
+    background-color: #FFFDE7;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none; 
+}
+
+/* 汎用 */
+.content_wrapper{
+    margin: 10% auto 0 auto;
+}
+
+/* header */
+
+.header_wrapper{
+    width: var(--header-width);
+    min-height: 100%;    
+    background-color: #FAF3E0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+}
+
+.header_logo{
+    position: fixed;
+    top: -4px;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    z-index: 999;
+    background-color: #FAF3E0;
+}
+
+.header_menu{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50vh;
+    /* left: 50%;
+    transform: translateX(-50%); */
+    left: 5;
+    cursor: pointer;
+}
+
+.header_menu:hover{
+    animation:fuwafuwa 2s infinite linear alternate;
+}
+@keyframes fuwafuwa {
+    0% {transform:translate(0,0) rotate(-5deg);}
+    50% {transform:translate(0,-5px) rotate(0deg);}
+    100% {transform:translate(0,0)rotate(5deg);}
+}
+
+.header_menu span{
+    display: block;
+    background: #000;
+    width: 80px;
+    position: absolute;
+    left: 10px;
+    transition: all .3s;
+}
+
+.header_menu span:nth-of-type(1){
+    position: absolute;
+    top: 15px;
+    border-radius: 150px 150px 25px 25px;
+    height: 30px;
+}
+.header_menu span:nth-of-type(2){
+    position: absolute;
+    top: 50px;
+    border-radius: 10px;
+    height: 15px;
+    visibility: hidden;
+}
+.header_menu span:nth-of-type(3){
+    position: absolute;
+    top: 50px;
+    border-radius: 10px;
+    height: 15px;
+}
+.header_menu span:nth-of-type(4){
+    position: absolute;
+    top: 70px;
+    border-radius: 5px 5px 10px 10px;
+    height: 15px;
+}
+
+.header_menu:hover span:nth-of-type(1){
+    transform: translateY(-10px);
+}
+.header_menu:hover span:nth-of-type(3){
+    background: #F28500;
+}
+.header_menu:hover span:nth-of-type(4){
+    transform: translateY(10px);
+}
+
+.header_menu.open span:nth-of-type(1){
+    transform: translateY(-100px);
+}
+.header_menu.open span:nth-of-type(2){
+    transform: rotate(-45deg);
+    visibility: visible;
+}
+.header_menu.open span:nth-of-type(3){
+    transform: rotate(45deg);
+    background: #F28500;
+}
+.header_menu.open span:nth-of-type(4){
+    transform: translateY(100px);
+}
+
+
+.header_menus{
+    width: 60%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #FAF3E0;
+    padding-left: var(--header-width);
+    transition: transform .6s;
+    transform: translateX(-100%);
+    z-index: 997;
+}
+
+.header_menus.open{
+    transform: translateX(0);
+}
+
+.header_ul{
+    position: absolute;
+    top: 25%;
+    left: 40%;
+}
+
+.header_li{
+    font-size: 3rem;
+}
+
+.header_li a{
+    color: #081C60;
+    position: relative;
+}
+
+.header_li a::after{
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: #F28500;
+    transform: scale(0, 1);
+    transform-origin: center top;
+    transition: transform 0.3s;
+}
+
+.header_li a:hover::after{
+    transform: scale(1,1);
+}
+
+.header_li a:hover{
+    color: #F28500;
+}
+
+/* main */
+main{
+    padding-left: var(--header-width);
+    overflow-x: hidden;
+}
+
+.mainVisual{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.mainVisual_slide{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: image-switch-animation 20s linear infinite;
+}
+
+.mainVisual_img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.mainVisual_slide:nth-of-type(2){
+    animation-delay: 5s;
+}
+.mainVisual_slide:nth-of-type(3){
+    animation-delay: 10s;
+}
+.mainVisual_slide:nth-of-type(4){
+    animation-delay: 15s;
+}
+
+@keyframes image-switch-animation{
+ 0%{
+    opacity: 0;
+ }
+ 10%{
+    opacity: 1;
+ }
+ 25%{
+    opacity: 1;
+ }
+ 40%{
+    opacity: 0;
+    transform: scale(1.1);
+ }
+ 100%{
+    opacity: 0;
+ }
+} 
+
+.scrolldown4{
+    /*描画位置※位置は適宜調整してください*/
+  position:absolute;
+  bottom:1%;
+  right:20%;
+    /*矢印の動き1秒かけて永遠にループ*/
+  animation: arrowmove 2s ease-in-out infinite;
+}
+
+/*下からの距離が変化して全体が下→上→下に動く*/
+@keyframes arrowmove{
+      0%{bottom:1%;}
+      50%{bottom:3%;}
+     100%{bottom:1%;}
+ }
+
+/*Scrollテキストの描写*/
+.scrolldown4 span{
+    /*描画位置*/
+  position: absolute;
+  left:-30px;
+  bottom:10px;
+    /*テキストの形状*/
+  color: #eee;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  /*縦書き設定*/
+  -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+
+/* 矢印の描写 */
+.scrolldown4:before {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 0;
+    right: -6px;
+    /*矢印の形状*/
+    width: 2px;
+    height: 20px;
+    background: #eee;
+    transform: skewX(-31deg);
+}
+
+.scrolldown4:after{
+  content:"";
+    /*描画位置*/
+  position: absolute;
+  bottom:0;
+  right:0;
+    /*矢印の形状*/
+  width:2px;
+  height: 60px;
+  background:#eee;
+}
+
+
+
+/* about */
+
+
+
+.about_wrapper{
+    width: 60%;
+    position: relative;
+}
+
+.title{
+    text-align: center;
+}
+
+.title_en{
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 3.5rem;
+    color: #F28500;
+}
+
+.title_ja{
+    font-size: 1.1rem;
+    position: relative;
+    display: inline-block;
+    margin-left: 10%;
+}
+
+.title_ja::before{
+    content: "";
+    background: #000;
+    width: 30px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: -35px;
+}
+
+.about_slider{
+    margin-top: 5%;
+}
+
+.about_slider img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.about_concept{
+    background: #FAF3E0;
+    opacity: 0.9;
+    width: 80%;
+    position: absolute;
+    right: -20%;
+    bottom: -20%;
+    padding: 20px;
+}
+
+
+.concept_title{
+    color: #F28500;
+    font-size: 2rem;
+    position: relative;
+}
+
+.concept_title::after{
+    content: "HAPPY PATTYとは";
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    color: #000;
+    font-size: 0.9rem;
+    margin-left: 40px;
+}
+
+.concept_title::before{
+    content: "";
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: #000;
+    position: absolute;
+    top: 50px;
+    right: 175px;
+}
+
+.concept_description{
+    line-height: 1.6;
+    margin-top: 5%;
+}
+
+
+/* foods */
+.foods_wrapper{
+    margin-top: 20%;
+}
+
+.lineUp{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.lineUp_img{
+    object-fit: cover;
+    width: 100%;
+    height: 400px;
+    background: #FAF3E0;
+}
+
+.lineUp_name{
+    margin-top: 5px;
+    font-weight: bold;
+    text-decoration: underline 3px;
+}
+
+.lineUp_description{
+    margin-top: 5px;
+}
+
+.lineUp_content:last-child{
+    position: relative;
+}
+
+.lineUp_last:hover{
+    filter: brightness(0.8);
+}
+
+.lineUp_last:hover .lineUp_viewmore{
+    color: #F28500;
+    transform: scale(1.2);
+}
+
+.lineUp_last{
+    width: 100%;
+    height: 400px;
+    background: #FAF3E0;
+    transition: all .3s;
+    text-align: center;
+}
+
+.lineUp_viewmore{
+    display: inline-block;
+    line-height: 400px;
+    width: 100%;
+    vertical-align: middle;
+    font-size: 1.8rem;
+    color: #081C60;
+    transition: all .3s;
+}
+
+
+/* access */
+
+.access_map{
+    text-align: center;
+    margin-top: 5%;
+    position: relative;
+}
+
+iframe{
+    width: 60%;
+    height: 500px;
+}
+
+.access_info{
+    text-align: initial;
+    background: #FAF3E0;
+    position: absolute;
+    right: 10%;
+    bottom: -20%;
+    padding: 3%;
+    opacity: 0.9;
+}
+
+.access_title{
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    color: #F28500;
+    position: relative;
+}
+
+.access_title:first-child::after{
+    content: "住所";
+    position: absolute;
+    color: #000;
+    font-size: 0.9rem;
+    margin-left: 40px;
+}
+.access_title:first-child::before{
+    content: "";
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: #000;
+    position: absolute;
+    top: 10px;
+    left: 120px;
+}
+.access_title:nth-child(3)::after{
+    content: "営業時間";
+    position: absolute;
+    color: #000;
+    font-size: 0.9rem;
+    margin-left: 40px;
+}
+.access_title:nth-child(3)::before{
+    content: "";
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: #000;
+    position: absolute;
+    top: 10px;
+    left: 180px;
+}
+
+.access_detail{
+    margin-top: 5px;
+}
+
+
+/* reserve */
+.reserve{
+    position: relative;
+    height: 70vh;
+    margin-top: 25%;
+}
+
+.reserve_wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0);
+}
+
+.reserve_bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/img/reserve_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.reserve_btn{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    display: inline-block;
+    width: auto;
+    border-radius: 30px;
+    background-color: #fff;
+    transition: all .3s;
+}
+
+.reserve_btn a{
+    display: block;
+    color: #081C60;
+    font-size: 2rem;
+    padding: 10px;
+}
+
+.reserve_btn:hover{
+    background-color: #F28500;
+    transform: scale(1.1);
+}
+
+.reserve_btn:hover a{
+    color: #fff;
+}
+
+/* sns */
+
+.sns_btns{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+.sns-button {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 150px;
+    margin-right: 5%;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 5rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+
+.sns-button:first-child:hover{
+    background-color: white;
+    color: black;
+}
+
+.sns-button:first-child::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s;
+    z-index: -1;
+}
+.sns-button:first-child:hover::before{
+    transform: scale(1);
+}
+.sns-button:nth-child(2)::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #B932A8;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s;
+    z-index: -1;
+}
+.sns-button:nth-child(2):hover::before{
+    transform: scale(1);
+}
+.sns-button:nth-child(3)::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #3B5998;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s;
+    z-index: -1;
+}
+.sns-button:nth-child(3):hover::before{
+    transform: scale(1);
+}
+.sns-button:last-child::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #29B901;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s;
+    z-index: -1;
+}
+.sns-button:last-child:hover::before{
+    transform: scale(1);
+}
+
+
+/* footer */
+.footer_wrapper{
+    margin: 15% 0 1% 0;
+    padding-left: var(--header-width);
+    text-align: center;
+}
+
+.footer_copy{
+    font-size: 0.7rem;
+}
+
+
+/* レスポンシブ */
+@media screen and (max-width:768px) {
+
+    /* 汎用 */
+    .content_wrapper{
+        width: 100%;
+        padding: 0 3%;
+       }
+
+    /* header */
+    .header_wrapper{
+        width: 100%;
+        height: 50px;
+        min-height: 0;
+        position: fixed;
+        top: initial;
+        bottom: 0;
+    }
+
+    .header_logo{
+        position: fixed;
+        top: initial;
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+    }
+
+    .header_menu{
+        bottom: 0;
+        top: initial;
+        right: 0;
+        left: initial;
+        transform: none;
+    }
+    
+    .header_menus{
+        width: 100%;
+        height: 70%;
+        top: initial;
+        bottom: 0;
+        padding-left: 0;
+        transform: translate(0,100%);
+    }
+
+    .header_ul{
+        position: absolute;
+        left: 30%;
+        top: 20%;
+    }
+
+    .header_li{
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    /* main */
+    main{
+        padding-left: initial;
+    }
+
+    .scrolldown4{
+        /*描画位置※位置は適宜調整してください*/
+        position:absolute;
+        bottom: 7%;
+        right:50%;
+    }
+    @keyframes arrowmove{
+        0%{bottom:7%;}
+        50%{bottom:9%;}
+       100%{bottom:7%;}
+   }
+
+   /* about */
+
+   .about_concept{
+    position: static;
+    width: 100%;
+    height: auto;
+   }
+
+   .concept_title::after{
+    content: "HAPPY PATTYとは";
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    color: #000;
+    font-size: 0.9rem;
+    margin-left: 40px;
+    }
+
+    .concept_title::before{
+        content: "";
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: #000;
+        position: absolute;
+        top: 45px;
+        right: 155px;
+    }
+
+    .concept_description{
+        margin-top: 3%;
+    }
+
+
+    /* foods */
+    .lineUp{
+        grid-template-columns: 45% 45%;
+    }
+
+    /* access */
+    iframe{
+        width: 100%;
+        height: 300px;
+    }
+
+    .access_info{
+        position: static;
+    }
+
+
+    /* sns */
+    .sns-button{
+        width: 100px;
+        height: 100px;
+        font-size: 3.5rem;
+        line-height: 100px;
+    }
+
+    .sns-button:last-child{
+        margin-right: initial;
+    }
+
+    /* footer */
+    .footer_wrapper{
+        padding-bottom: 50px
+    }
+}
+
+
+
